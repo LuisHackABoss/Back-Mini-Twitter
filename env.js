@@ -15,6 +15,7 @@ const {
   SMTP_PORT,
   SMTP_USER,
   SMTP_PASS,
+  SMTP_API_KEY,
 } = process.env;
 
 export {
@@ -30,4 +31,5 @@ export {
   SMTP_PORT,
   SMTP_USER,
   SMTP_PASS,
+  SMTP_API_KEY,
 };
