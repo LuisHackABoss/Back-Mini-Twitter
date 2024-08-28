@@ -1,3 +1,6 @@
+// Importamos el módulo de crypto para generar un uuid.
+import crypto from 'crypto';
+
 // Importamos el esquema.
 import { validateSchemaUtil } from '../../utils/validateSchemaUtil.js';
 import { newUserSchema } from '../../schemas/users/newUserSchema.js';

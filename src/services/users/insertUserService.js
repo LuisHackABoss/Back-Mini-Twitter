@@ -1,3 +1,6 @@
+// Importamos el módulo de crypto para generar un uuid.
+import crypto from 'crypto';
+
 // Importar el módulo bcrypt.
 import bcrypt from 'bcrypt';
 
@@ -73,7 +76,6 @@ export const insertUserService = async (
     // Enviamos el email de verificación.
     // await sendEmailUtil(email, emailSubject, emailText);
     await sendEmailBrevoUtil(email, emailSubject, emailText);
-
   } catch (error) {
     // Manejar el error aquí.
     console.error('Error al insertar usuario:', error);

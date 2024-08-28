@@ -1,3 +1,6 @@
+// Importamos el módulo de crypto para generar un uuid.
+import crypto from 'crypto';
+
 // Importar el módulo path.
 import path from 'path';
 
