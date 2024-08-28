@@ -7,6 +7,7 @@ import {
   MYSQL_USER,
   MYSQL_PASSWORD,
   MYSQL_DATABASE,
+  MYSQL_PORT,
 } from '../../env.js';
 
 // Crear una variable para almacenar el pool de conexiones
@@ -21,6 +22,7 @@ export const getPool = async () => {
         host: MYSQL_HOST,
         user: MYSQL_USER,
         password: MYSQL_PASSWORD,
+        port: MYSQL_PORT || 3306,
       });
 
       // Crear la base de datos si no existe
@@ -32,6 +34,7 @@ export const getPool = async () => {
         host: MYSQL_HOST,
         user: MYSQL_USER,
         password: MYSQL_PASSWORD,
+        port: MYSQL_PORT || 3306,
         database: MYSQL_DATABASE,
         timezone: 'Z',
       });

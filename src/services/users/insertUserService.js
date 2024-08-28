@@ -18,6 +18,7 @@ import {
 } from '../errorService.js';
 
 import { PORT } from '../../../env.js';
+import { sendEmailBrevoUtil } from '../../utils/sendEmailBrevoUtil.js';
 
 export const insertUserService = async (
   username,
@@ -70,7 +71,9 @@ export const insertUserService = async (
     `;
 
     // Enviamos el email de verificación.
-    await sendEmailUtil(email, emailSubject, emailText);
+    // await sendEmailUtil(email, emailSubject, emailText);
+    await sendEmailBrevoUtil(email, emailSubject, emailText);
+
   } catch (error) {
     // Manejar el error aquí.
     console.error('Error al insertar usuario:', error);
