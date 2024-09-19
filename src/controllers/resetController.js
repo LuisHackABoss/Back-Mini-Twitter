@@ -1,3 +1,4 @@
+import { initDb } from '../db/initDb.js';
 import { notAuthorizedError } from '../services/errorService.js';
 
 export const resetController = async (req, res, next) => {
