@@ -1,5 +1,9 @@
 // Importar el pool de conexiones
 import { getPool } from './getPool.js';
+// Importamos el módulo de crypto para generar un uuid.
+import crypto from 'crypto';
+// Importar el módulo bcrypt.
+import bcrypt from 'bcrypt';
 
 // Importar los utilidades para crear y borrar directorios
 import { createUploadsPathUtil } from '../utils/createUploadsPathUtil.js';
@@ -67,6 +71,21 @@ const initDb = async () => {
     console.log('Creando directorios de subida 📂');
     await createUploadsPathUtil();
     console.log('Directorios de subida creados ✅ 📂');
+
+    // Crear un usuario admin
+    console.log('Creando usuario admin 🧑‍💼');
+    const adminId = crypto.randomUUID();
+    const password = 'Admin@1234';
+    // Hasheamos la contraseña.
+    const hashedPass = await bcrypt.hash(password, 10);
+    await pool.query(
+      `
+      INSERT INTO users (id, username, email, password, role, active)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `,
+      [adminId, 'admin', 'admin@yopmail.com', hashedPass, 'admin', true]
+    );
+    console.log('Usuario admin creado ✅ 🧑‍💼');
 
     console.log('Todo ha ido bien 🚀');
     process.exit(0); // Cerro la conexión. El 0 indica que todo ha ido bien
