@@ -12,7 +12,7 @@ import { deleteUploadsPathUtil } from '../utils/deleteUploadsPathUtil.js';
 // Importar las variables de entorno
 import { MYSQL_DATABASE } from '../../env.js';
 
-const initDb = async () => {
+export const initDb = async () => {
   try {
     // Obtener el pool de conexiones
     const pool = await getPool();
