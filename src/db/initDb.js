@@ -88,13 +88,21 @@ export const initDb = async () => {
     console.log('Usuario admin creado ✅ 🧑‍💼');
 
     console.log('Todo ha ido bien 🚀');
-    process.exit(0); // Cerro la conexión. El 0 indica que todo ha ido bien
+    if (
+      import.meta.url ===
+      new URL(process.argv[1], `file://${process.cwd()}/`).toString()
+    ) {
+      process.exit(0); // Cerro la conexión. El 0 indica que todo ha ido bien
+    }
   } catch (error) {
     console.error(error);
     process.exit(1); // El 1 indica que ha habido un error
   }
 };
 // Verificamos que el archivo se ejecute directamente solo cuando sea como script. estoy usando type: module por lo que no puedo usar require.main
-if (import.meta.url === new URL(import.meta.url).pathname) {
+if (
+  import.meta.url ===
+  new URL(process.argv[1], `file://${process.cwd()}/`).toString()
+) {
   initDb();
 }
