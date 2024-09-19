@@ -94,5 +94,7 @@ export const initDb = async () => {
     process.exit(1); // El 1 indica que ha habido un error
   }
 };
-
-// initDb();
+// Verificamos que el archivo se ejecute directamente solo cuando sea como script. estoy usando type: module por lo que no puedo usar require.main
+if (import.meta.url === new URL(import.meta.url).pathname) {
+  initDb();
+}
